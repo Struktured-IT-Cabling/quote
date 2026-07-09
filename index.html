@@ -6,7 +6,6 @@
   <title>Struktured IT Cabling — Get a Quote</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- QR code generator (free, no account needed) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,9 +57,7 @@
       color: var(--white);
     }
 
-    .logo-mark .sk span {
-      color: var(--yellow);
-    }
+    .logo-mark .sk span { color: var(--yellow); }
 
     .logo-mark .tagline {
       font-size: 0.7rem;
@@ -156,6 +153,7 @@
     }
 
     .btn-primary:hover { background: #ffd93d; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
     .btn-secondary {
       background: transparent;
@@ -211,7 +209,7 @@
     /* ── SERVICES ─────────────────────────────── */
     .services {
       border-top: 1px solid var(--border);
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       max-width: 960px;
       margin: 0 auto;
     }
@@ -222,45 +220,52 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--yellow);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
     }
 
     .service-card {
-      background: var(--steel);
-      padding: 2rem 1.5rem;
+      background: transparent;
+      padding: 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       transition: background 0.15s;
     }
 
-    .service-card:hover { background: var(--iron); }
+    /* Remove right border on last column */
+    .service-card:nth-child(3n) { border-right: none; }
+
+    /* Remove bottom border on last row */
+    .service-card:nth-last-child(-n+3) { border-bottom: none; }
+
+    .service-card:hover { background: rgba(255,255,255,0.03); }
 
     .service-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       display: block;
+      opacity: 0.9;
     }
 
     .service-card h3 {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       color: var(--white);
     }
 
     .service-card p {
       font-size: 0.85rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* ── FORM ─────────────────────────────────── */
@@ -407,15 +412,27 @@
         gap: 2.5rem;
       }
 
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .service-card:nth-child(2n) { border-right: none; }
+      .service-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
+      .service-card:nth-last-child(-n+2) { border-bottom: none; }
+
       .quote-form { grid-template-columns: 1fr; }
-
       .form-section { padding: 3rem 1.25rem 4rem; }
-
       .services { padding: 3rem 1.25rem; }
-
       header { padding: 1rem 1.25rem; }
-
       .logo-mark .tagline { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none !important; }
+      .service-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .service-card:last-child { border-bottom: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -514,7 +531,7 @@
     </div>
     <div class="form-group">
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="(512) 555-0100" />
+      <input type="tel" id="phone" placeholder="(940) 629-4969" />
     </div>
     <div class="form-group">
       <label for="company">Company / Organization</label>
@@ -546,7 +563,7 @@
     </div>
 
     <div class="form-submit">
-      <button class="btn-primary" onclick="handleSubmit()">Send Request</button>
+      <button class="btn-primary" id="submitBtn" onclick="handleSubmit()">Send Request</button>
       <span class="form-note">No spam. No obligation. Just a straight answer on what your project will cost.</span>
     </div>
   </div>
@@ -561,9 +578,8 @@
 
 <script>
   // ── QR CODE ───────────────────────────────────────────────────────────
-  // Points to whatever URL this page is hosted at (or falls back to a placeholder)
-  const pageURL = window.location.href === 'about:blank'
-    ? 'https://struktured-it-cabling.github.io/quote/'   // ← REPLACE with your real URL when hosted
+  const pageURL = (window.location.href === 'about:blank' || window.location.protocol === 'file:')
+    ? 'https://struktured-it-cabling.github.io/quote/'
     : window.location.href;
 
   document.getElementById('qr-url-text').textContent = pageURL;
@@ -577,8 +593,8 @@
     correctLevel: QRCode.CorrectLevel.H
   });
 
-  // ── FORM SUBMIT (mailto: — swap for Calendly/Formspree/etc.) ─────────
-  function handleSubmit() {
+  // ── FORM SUBMIT (Formspree) ───────────────────────────────────────────
+  async function handleSubmit() {
     const fname   = document.getElementById('fname').value.trim();
     const lname   = document.getElementById('lname').value.trim();
     const email   = document.getElementById('email').value.trim();
@@ -593,22 +609,38 @@
       return;
     }
 
-    const subject = `Quote Request — ${service} — ${fname} ${lname}`;
-    const body =
-      `Name: ${fname} ${lname}\n` +
-      `Email: ${email}\n` +
-      `Phone: ${phone}\n` +
-      `Company: ${company}\n` +
-      `Service: ${service}\n` +
-      `Location: ${loc}\n\n` +
-      `Details:\n${details}`;
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
 
-    // ── SWAP THIS LINE with your real email ──────────────────────────
-    window.location.href =
-      `mailto:quotes@strukturedit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const res = await fetch('https://formspree.io/f/maqgbpov', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name:     `${fname} ${lname}`,
+          email,
+          phone,
+          company,
+          service,
+          location: loc,
+          details
+        })
+      });
 
-    document.getElementById('successMsg').style.display = 'block';
-    document.querySelector('.form-submit').style.display = 'none';
+      if (res.ok) {
+        document.getElementById('successMsg').style.display = 'block';
+        document.querySelector('.form-submit').style.display = 'none';
+      } else {
+        btn.textContent = 'Send Request';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or call us at (940) 629-4969.');
+      }
+    } catch (err) {
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Network error. Please check your connection and try again.');
+    }
   }
 </script>
 </body>
