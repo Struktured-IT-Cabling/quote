@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,53 +30,47 @@
       line-height: 1.6;
     }
 
-    /* ── UPDATED HEADER ───────────────────────────── */
+    /* ── HEADER ───────────────────────────────── */
     header {
       border-bottom: 1px solid var(--border);
       padding: 1.2rem 2rem;
       display: flex;
       align-items: center;
-      justify-content: center; /* center everything */
+      justify-content: space-between;
       position: sticky;
       top: 0;
       background: var(--black);
       z-index: 100;
     }
 
-    /* Centered logo block */
     .logo-mark {
-      text-align: center;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      pointer-events: none;
+      align-items: baseline;
+      gap: 0.5rem;
     }
 
     .logo-mark .sk {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: 2.8rem; /* larger logo */
+      font-size: 1.6rem;
       letter-spacing: -0.02em;
       color: var(--white);
-      text-transform: uppercase;
     }
 
     .logo-mark .sk span { color: var(--yellow); }
 
     .logo-mark .tagline {
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
+      border-left: 2px solid var(--yellow);
+      padding-left: 0.6rem;
       line-height: 1.3;
     }
 
-    /* Keep CTA button on the right */
     .nav-cta {
-      position: absolute;
-      right: 2rem;
       background: var(--yellow);
       color: var(--black);
       font-family: 'Barlow Condensed', sans-serif;
@@ -244,7 +237,10 @@
       transition: background 0.15s;
     }
 
+    /* Remove right border on last column */
     .service-card:nth-child(3n) { border-right: none; }
+
+    /* Remove bottom border on last row */
     .service-card:nth-last-child(-n+3) { border-bottom: none; }
 
     .service-card:hover { background: rgba(255,255,255,0.03); }
@@ -428,7 +424,6 @@
       .quote-form { grid-template-columns: 1fr; }
       .form-section { padding: 3rem 1.25rem 4rem; }
       .services { padding: 3rem 1.25rem; }
-
       header { padding: 1rem 1.25rem; }
       .logo-mark .tagline { display: none; }
     }
@@ -445,7 +440,6 @@
     }
   </style>
 </head>
-
 <body>
 
 <!-- HEADER -->
@@ -454,7 +448,6 @@
     <span class="sk"><span>S</span>TRUKTURED</span>
     <span class="tagline">IT Cabling<br>Texan Owned &amp; Operated</span>
   </div>
-
   <a class="nav-cta" href="#quote">Get a Quote</a>
 </header>
 
@@ -512,4 +505,143 @@
       <h3>As-Built Documentation</h3>
       <p>Detailed cable maps and port documentation delivered with every completed job.</p>
     </div>
-  </div
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="form-section" id="quote">
+  <div class="form-header">
+    <p class="section-label">Free Estimates</p>
+    <h2>Request a <span>Quote</span></h2>
+    <p>Tell us about your project and we'll get back to you within one business day.</p>
+  </div>
+
+  <div class="quote-form" id="quoteForm">
+    <div class="form-group">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" placeholder="John" />
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" placeholder="Smith" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="john@company.com" />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="(940) 629-4969" />
+    </div>
+    <div class="form-group">
+      <label for="company">Company / Organization</label>
+      <input type="text" id="company" placeholder="Acme Corp" />
+    </div>
+    <div class="form-group">
+      <label for="service">Service Needed</label>
+      <select id="service">
+        <option value="" disabled selected>Select a service…</option>
+        <option>Structured Cabling</option>
+        <option>Network Buildout</option>
+        <option>New Construction Pre-Wire</option>
+        <option>Audit &amp; Remediation</option>
+        <option>Camera / AV Cabling</option>
+        <option>Multiple / Not Sure</option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label for="location">Job Site City / Address</label>
+      <input type="text" id="location" placeholder="Frisco, TX" />
+    </div>
+    <div class="form-group full">
+      <label for="details">Project Details</label>
+      <textarea id="details" placeholder="Describe the scope — number of drops, building size, timeline, any existing infrastructure…"></textarea>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      ✔ Request sent — we'll be in touch within one business day.
+    </div>
+
+    <div class="form-submit">
+      <button class="btn-primary" id="submitBtn" onclick="handleSubmit()">Send Request</button>
+      <span class="form-note">No spam. No obligation. Just a straight answer on what your project will cost.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>S</span>TRUKTURED IT Cabling</div>
+  <p>Texan Owned &amp; Operated · Serving Texas Businesses</p>
+  <p>© 2025 Struktured IT Cabling. All rights reserved.</p>
+</footer>
+
+<script>
+  // ── QR CODE ───────────────────────────────────────────────────────────
+  const pageURL = (window.location.href === 'about:blank' || window.location.protocol === 'file:')
+    ? 'https://struktured-it-cabling.github.io/quote/'
+    : window.location.href;
+
+  document.getElementById('qr-url-text').textContent = pageURL;
+
+  new QRCode(document.getElementById('qrcode'), {
+    text: pageURL,
+    width: 180,
+    height: 180,
+    colorDark: '#0A0A0A',
+    colorLight: '#F0EEE9',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  // ── FORM SUBMIT (Formspree) ───────────────────────────────────────────
+  async function handleSubmit() {
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const service = document.getElementById('service').value;
+    const loc     = document.getElementById('location').value.trim();
+    const details = document.getElementById('details').value.trim();
+
+    if (!fname || !email || !service) {
+      alert('Please fill in at least your name, email, and the service needed.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/maqgbpov', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name:     `${fname} ${lname}`,
+          email,
+          phone,
+          company,
+          service,
+          location: loc,
+          details
+        })
+      });
+
+      if (res.ok) {
+        document.getElementById('successMsg').style.display = 'block';
+        document.querySelector('.form-submit').style.display = 'none';
+      } else {
+        btn.textContent = 'Send Request';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or call us at (940) 629-4969.');
+      }
+    } catch (err) {
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Network error. Please check your connection and try again.');
+    }
+  }
+</script>
+</body>
+</html>
