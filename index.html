@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Structured Cabling Prosper & Celina, TX | Struktured IT Cabling</title>
+  <meta name="description" content="Commercial structured cabling, Cat6 installation, fiber, network buildouts, and low-voltage pre-wire in Prosper, Celina, Frisco, and North Texas." />
+  <meta name="robots" content="index, follow" />
+  <title>Structured Cabling Prosper &amp; Celina, TX | Struktured IT Cabling</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -236,6 +238,30 @@
       line-height: 1.6;
     }
 
+
+    /* ── SERVICE AREA ─────────────────────────── */
+    .service-area {
+      border-top: 1px solid var(--border);
+      padding: 5rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .service-area h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .service-area h2 span { color: var(--yellow); }
+    .service-area p:not(.section-label) {
+      color: #B0AEAA;
+      max-width: 72ch;
+      margin-bottom: 1rem;
+    }
+    .service-area p:last-child { margin-bottom: 0; }
+
     /* ── FORM ─────────────────────────────────── */
     .form-section {
       border-top: 1px solid var(--border);
@@ -421,6 +447,7 @@
       .quote-form { grid-template-columns: 1fr; }
       .form-section { padding: 3rem 1.25rem 4rem; }
       .services { padding: 3rem 1.25rem; }
+      .service-area { padding: 3rem 1.25rem; }
       header { padding: 1rem 1.25rem; }
       .header-icon { height: 44px; } .header-wordmark { height: 24px; }
     }
@@ -436,6 +463,32 @@
       * { transition: none !important; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Struktured IT Cabling",
+    "description": "Commercial structured cabling, Cat6 installation, fiber cabling, network buildouts, and low-voltage pre-wire serving Prosper, Celina, and North Texas.",
+    "areaServed": [
+      { "@type": "City", "name": "Prosper", "addressRegion": "TX" },
+      { "@type": "City", "name": "Celina", "addressRegion": "TX" },
+      { "@type": "City", "name": "Frisco", "addressRegion": "TX" },
+      { "@type": "City", "name": "McKinney", "addressRegion": "TX" },
+      { "@type": "AdministrativeArea", "name": "Denton County", "addressRegion": "TX" }
+    ],
+    "serviceType": [
+      "Commercial Structured Cabling",
+      "Cat6 Ethernet Installation",
+      "Fiber-Optic Cabling",
+      "Network Buildouts",
+      "New Construction Low-Voltage Pre-Wire",
+      "Security Camera Cabling",
+      "Commercial AV Cabling",
+      "Cable Testing and Labeling",
+      "As-Built Documentation"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -451,7 +504,10 @@
 <section class="hero">
   <div class="hero-copy">
     <p class="hero-eyebrow">Professional IT Infrastructure</p>
-    <h1>Built <em>Right.</em> Built <em>Texas.</em></h1>
+    <h1>
+        Commercial Structured Cabling
+        <em>Prosper &amp; Celina, TX</em>
+      </h1>
     <p>Structured cabling, network buildouts, and data center runs — done clean, on time, and backed by Texan craftsmanship.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#quote">Request a Quote</a>
@@ -469,7 +525,7 @@
   <div class="services-grid">
       <div class="service-card">
         <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5C400" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg></span>
-        <h3>Structured Cabling Celina</h3><p>Cat6 ethernet and fiber runs for offices, warehouses, and new commercial builds across Celina and the 380 corridor.</p>
+        <h3>Structured Cabling in Prosper &amp; Celina</h3><p>Commercial Cat6 ethernet and fiber installation for offices, warehouses, retail spaces, and new construction across Prosper, Celina, and the Highway 380 corridor.</p>
       </div>
       <div class="service-card">
         <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5C400" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></span>
@@ -495,6 +551,15 @@
 </section>
 
 <!-- QUOTE FORM -->
+<!-- SERVICE AREA -->
+<section class="service-area" aria-labelledby="service-area-heading">
+  <p class="section-label">North Texas Service Area</p>
+  <h2 id="service-area-heading">Commercial Structured Cabling in <span>Prosper &amp; Celina</span></h2>
+  <p>Struktured IT Cabling installs reliable low-voltage infrastructure for businesses, offices, warehouses, retail spaces, and new commercial construction throughout Prosper, Celina, and the Highway 380 corridor.</p>
+  <p>Our services include Cat6 ethernet installation, fiber-optic cabling, network racks, patch panels, camera cabling, commercial AV cabling, cable testing, labeling, and as-built documentation.</p>
+  <p>We also serve Frisco, McKinney, Little Elm, Aubrey, Denton County, and surrounding North Texas communities.</p>
+</section>
+
 <section class="form-section" id="quote">
   <div class="form-header">
     <p class="section-label">Free Estimates</p>
